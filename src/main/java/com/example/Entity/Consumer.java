@@ -15,12 +15,15 @@ public class Consumer {
 
     @Id
     @GeneratedValue
-    private int id;
+    private int consumerId;
     private String consumerFullName;
     private String consumerAddress;
     @Enumerated(EnumType.STRING)
     private PaymentType paymentType;
     private String username;
     private String password;
+
+    @OneToOne(mappedBy = "consumers", targetEntity = Order.class)
+    private Order order;
 
 }

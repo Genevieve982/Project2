@@ -2,8 +2,7 @@ package com.example.Entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Setter
@@ -14,9 +13,13 @@ import javax.persistence.Table;
 @Table(name="couriers")
 public class Courier {
 
-    private int id;
+    @Id
+    @GeneratedValue
+    private int courierId;
     private String courierName;
-    private String
+    private Boolean hasOrder;
 
+    @OneToOne(mappedBy = "couriers", targetEntity = Order.class)
+    private Order order;
 
 }

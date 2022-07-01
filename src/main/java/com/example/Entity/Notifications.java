@@ -12,25 +12,21 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Table(name="restaurants")
-public class Restaurant {
+@Table(name="notifications")
+public class Notifications {
 
     @Id
     @GeneratedValue
-    private int restaurantId;
-    private String restName;
-    private String restAddress;
-    private String menu;
+    private int notificationId;
+    private String message;
 
+    // Below needs changes to specify notifications
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "restaurants_foods",
-            joinColumns = @JoinColumn(name = "restaurants_id"),
+            name = "orders_foods",
+            joinColumns = @JoinColumn(name = "orders_id"),
             inverseJoinColumns = @JoinColumn(name = "foods_id")
     )
     private List<Food> foods = new ArrayList<>();
-
-    @OneToOne(mappedBy = "restaurants", targetEntity = Order.class)
-    private Order order;
 
 }

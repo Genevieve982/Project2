@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Table(name="foods")
 public class Food {
 
-    private int id;
+    private int foodId;
     @Enumerated(EnumType.STRING)
     private FoodType foodType;
     private String foodName;
